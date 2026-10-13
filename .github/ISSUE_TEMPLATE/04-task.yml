@@ -1,0 +1,50 @@
+name: งานทั่วไปหรือ tech debt (Task)
+description: งานที่ไม่ใช่บั๊กหรือฟีเจอร์ใหม่ เช่น refactor, tech debt, งาน CI หรือ dependency, เอกสาร, spike
+title: "[Task] "
+type: Task
+body:
+  - type: dropdown
+    id: kind
+    attributes:
+      label: ประเภทงาน (Task type)
+      options:
+        - Tech debt / refactor
+        - Chore (CI, เครื่องมือ, dependency)
+        - Documentation
+        - Spike / investigation
+        - Ops / infrastructure
+        - อื่นๆ
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: งานที่ต้องทำ (What)
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: เหตุผล (Why)
+      description: ถ้าไม่ทำจะเกิดอะไรขึ้น หรือทำแล้วได้อะไร
+    validations:
+      required: true
+  - type: textarea
+    id: done
+    attributes:
+      label: เสร็จเมื่อ (Definition of done)
+      value: |
+        - [ ]
+        - [ ]
+    validations:
+      required: true
+  - type: textarea
+    id: risk
+    attributes:
+      label: ความเสี่ยงและผลกระทบ (Risk)
+      description: พฤติกรรมที่อาจเปลี่ยน, downtime, การ migrate ข้อมูล
+  - type: textarea
+    id: related
+    attributes:
+      label: Issue / PR ที่เกี่ยวข้อง (Related)
+      placeholder: "#123"

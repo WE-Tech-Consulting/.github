@@ -1,0 +1,79 @@
+name: ผลการทดสอบ UAT (UAT finding)
+description: สิ่งที่พบระหว่างผู้ใช้ทดสอบรับงาน (User Acceptance Test) ทั้งจุดที่ไม่ตรงเกณฑ์ ขอเปลี่ยน หรือข้อสงสัย
+title: "[UAT] "
+labels: ["uat"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ใช้แบบฟอร์มนี้กับสิ่งที่พบในรอบ UAT เท่านั้น ถ้าพบที่ environment อื่นให้ใช้ "รายงานบั๊ก"
+        ทีมจะตั้ง issue type (Bug หรือ Feature) ตอน triage ตามประเภทที่เลือกด้านล่าง
+        ห้ามใส่ข้อมูลส่วนบุคคลจริงของผู้ใช้หรือบุคลากร
+  - type: input
+    id: feature_issue
+    attributes:
+      label: ฟีเจอร์หรือ issue ที่ทดสอบ (Feature under test)
+      description: เลข issue ของฟีเจอร์ที่มีเกณฑ์การยอมรับ
+      placeholder: "#123"
+    validations:
+      required: true
+  - type: input
+    id: scenario
+    attributes:
+      label: สถานการณ์ทดสอบ (UAT scenario / test case)
+      placeholder: "เช่น UAT-LEAVE-03 อนุมัติคำขอลาหลายระดับ"
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: ประเภทสิ่งที่พบ (Finding type)
+      options:
+        - "ไม่ตรงเกณฑ์การยอมรับ (Defect)"
+        - "ขอเปลี่ยนจากที่ตกลงไว้ (Change request)"
+        - "ข้อสงสัยหรือต้องการคำอธิบาย (Question)"
+    validations:
+      required: true
+  - type: dropdown
+    id: blocks_signoff
+    attributes:
+      label: ขวางการ sign-off UAT หรือไม่ (Blocks sign-off)
+      options:
+        - "ขวาง: ต้องแก้ก่อน sign-off"
+        - "ไม่ขวาง: แต่ต้องแก้ก่อนขึ้น Production"
+        - "ไม่ขวาง: แก้ภายหลังได้"
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: ขั้นตอนที่ทำ (Steps)
+      value: |
+        บทบาทผู้ใช้:
+        1.
+        2.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: ผลที่คาดหวังตามเกณฑ์การยอมรับ (Expected)
+      description: อ้างข้อในเกณฑ์การยอมรับของ issue ฟีเจอร์ ถ้ามี
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: ผลที่เกิดขึ้นจริง (Actual)
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: หลักฐาน (Evidence)
+      description: ภาพหน้าจอหรือวิดีโอที่ปิดบังข้อมูลส่วนบุคคลแล้ว และเวลาที่ทดสอบเป็น UTC
+  - type: input
+    id: round
+    attributes:
+      label: รอบ UAT และหน่วยงานผู้ทดสอบ (UAT round)
+      placeholder: "เช่น UAT รอบ 2, ฝ่ายบุคคล"

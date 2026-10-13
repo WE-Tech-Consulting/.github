@@ -1,0 +1,47 @@
+name: Epic
+description: งานใหญ่ที่แบ่งเป็น sub-issue หลายตัว ใช้ติดตามเป้าหมายระดับฟีเจอร์หรือ module
+title: "[Epic] "
+type: Feature
+labels: ["epic"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        สร้างงานย่อยด้วยแบบฟอร์ม Feature, Task หรือ Bug แล้วผูกเป็น sub-issue ของ epic นี้ ความคืบหน้าจะแสดงใน field "Sub-issues progress" ของ project
+        ตั้ง Start date และ Target date ใน field ของ issue แทนการเขียนวันที่ในเนื้อหา
+  - type: textarea
+    id: goal
+    attributes:
+      label: เป้าหมาย (Goal)
+      description: ผลลัพธ์ที่ผู้ใช้หรือธุรกิจจะได้เมื่อ epic นี้เสร็จ
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: ขอบเขต (In scope)
+    validations:
+      required: true
+  - type: textarea
+    id: out_of_scope
+    attributes:
+      label: นอกขอบเขต (Out of scope)
+  - type: textarea
+    id: breakdown
+    attributes:
+      label: งานย่อยที่วางแผนไว้ (Planned sub-issues)
+      description: รายการเบื้องต้น จะถูกแทนด้วย sub-issue จริง
+      value: |
+        - [ ]
+        - [ ]
+  - type: textarea
+    id: success
+    attributes:
+      label: เกณฑ์ความสำเร็จ (Success criteria)
+      description: วัดอย่างไรว่า epic นี้เสร็จ รวมเงื่อนไข sign-off UAT
+    validations:
+      required: true
+  - type: textarea
+    id: risks
+    attributes:
+      label: ความเสี่ยงและ dependency (Risks & dependencies)

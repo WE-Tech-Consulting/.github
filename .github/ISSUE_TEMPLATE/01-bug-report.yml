@@ -1,0 +1,99 @@
+name: รายงานบั๊ก (Bug report)
+description: ระบบทำงานไม่ตรงกับที่ควรเป็น พบได้ทุก environment ตั้งแต่ Local ถึง Production
+title: "[Bug] "
+type: Bug
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ใส่ข้อมูลให้พอที่คนอื่นทำซ้ำได้โดยไม่ต้องถามกลับ
+        ห้ามใส่ password, token, secret หรือข้อมูลส่วนบุคคลจริง (ชื่อ, เลขบัตรประชาชน, เบอร์โทร, อีเมล, ที่อยู่) ให้ใช้ข้อมูลทดสอบหรือปิดบังก่อนแนบ
+        ถ้าเป็นช่องโหว่ด้านความปลอดภัย ให้ใช้แบบฟอร์ม "รายงานช่องโหว่ความปลอดภัย" แทน
+        ถ้าพบระหว่างทดสอบ UAT กับผู้ใช้ ให้ใช้แบบฟอร์ม "ผลการทดสอบ UAT"
+  - type: textarea
+    id: summary
+    attributes:
+      label: สรุปปัญหา (Summary)
+      description: หนึ่งถึงสองประโยค อะไรผิด และกระทบใคร
+    validations:
+      required: true
+  - type: dropdown
+    id: environment
+    attributes:
+      label: พบที่ environment (Found in)
+      options:
+        - Local
+        - Dev
+        - Testing / QA
+        - UAT
+        - Production
+    validations:
+      required: true
+  - type: dropdown
+    id: severity
+    attributes:
+      label: ความรุนแรง (Severity)
+      options:
+        - "S1 Critical: ระบบล่ม ข้อมูลเสียหายหรือรั่ว และไม่มีทางเลี่ยง"
+        - "S2 High: ฟังก์ชันหลักใช้ไม่ได้ ทางเลี่ยงยุ่งยาก"
+        - "S3 Medium: ฟังก์ชันรองผิด หรือมีทางเลี่ยงง่าย"
+        - "S4 Low: การแสดงผล ข้อความ หรือเรื่องเล็ก"
+    validations:
+      required: true
+  - type: input
+    id: area
+    attributes:
+      label: ส่วนของระบบ (Area)
+      description: หน้าจอ, route, endpoint, module หรือ job ที่เกิดปัญหา
+      placeholder: "เช่น หน้ารายการคำขอลา, POST /api/v1/..., งาน sync ตอนกลางคืน"
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: ขั้นตอนทำซ้ำ (Steps to reproduce)
+      description: ระบุบทบาทหรือสิทธิ์ของผู้ใช้ที่ใช้ทดสอบด้วย
+      value: |
+        บทบาทผู้ใช้:
+        1.
+        2.
+        3.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: ผลที่คาดหวัง (Expected)
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: ผลที่เกิดขึ้นจริง (Actual)
+      description: ข้อความ error ที่เห็น ให้คัดลอกตามตัวอักษร
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: หลักฐาน (Evidence)
+      description: ภาพหน้าจอ, log ที่ปิดบังข้อมูลส่วนบุคคลแล้ว, request id หรือ trace id และเวลาที่เกิดเป็น UTC
+  - type: input
+    id: version
+    attributes:
+      label: เวอร์ชัน / commit / build (Version)
+      placeholder: "เช่น v1.4.0, commit a1b2c3d, deploy วันที่ 2026-10-13"
+  - type: dropdown
+    id: regression
+    attributes:
+      label: เคยทำงานได้มาก่อนไหม (Regression)
+      options:
+        - ไม่แน่ใจ
+        - ใช่ เคยทำงานได้ (regression)
+        - ไม่ใช่ ไม่เคยทำงานได้
+  - type: textarea
+    id: related
+    attributes:
+      label: Issue / PR ที่เกี่ยวข้อง (Related)
+      placeholder: "#123, #456"

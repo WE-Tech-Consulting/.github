@@ -1,0 +1,72 @@
+name: ขอฟีเจอร์ใหม่ (Feature request)
+description: ความสามารถใหม่ หรือการเปลี่ยนพฤติกรรมของระบบที่ผู้ใช้ต้องการ
+title: "[Feature] "
+type: Feature
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        issue ใหม่เริ่มที่สถานะ Backlog และย้ายไป Ready เมื่อเช็กลิสต์ Definition of Ready ด้านล่างครบ
+        ตอนเปิดไม่จำเป็นต้องครบทุกช่อง แต่ "ปัญหา" และ "เกณฑ์การยอมรับ" ต้องมี
+  - type: textarea
+    id: problem
+    attributes:
+      label: ปัญหาหรือความต้องการ (Problem / user need)
+      description: เขียนเป็น user story ถ้าทำได้ และบอกว่าตอนนี้ผู้ใช้ทำอย่างไรแทน
+      placeholder: "ในฐานะ <บทบาท> ฉันต้องการ <สิ่งที่ทำได้> เพื่อ <ประโยชน์>"
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: สิ่งที่เสนอ (Proposed solution)
+      description: พฤติกรรมที่ต้องการ ไม่ต้องลงรายละเอียด implementation
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: เกณฑ์การยอมรับ (Acceptance criteria)
+      description: แต่ละข้อต้องทดสอบได้ ใช้รูป Given / When / Then ได้ ข้อเหล่านี้จะใช้ตรวจตอน Testing และ UAT
+      value: |
+        - [ ] Given ... When ... Then ...
+        - [ ]
+    validations:
+      required: true
+  - type: textarea
+    id: out_of_scope
+    attributes:
+      label: นอกขอบเขต (Out of scope)
+      description: สิ่งที่ตั้งใจไม่ทำในรอบนี้ เพื่อกันขอบเขตบาน
+  - type: textarea
+    id: impact
+    attributes:
+      label: ผลกระทบต่อส่วนอื่น (Impact)
+      description: API contract, schema ฐานข้อมูล, สิทธิ์ผู้ใช้, ระบบภายนอก, ข้อมูลเดิมที่ต้อง migrate
+  - type: textarea
+    id: personal_data
+    attributes:
+      label: ข้อมูลส่วนบุคคลและสิทธิ์การเข้าถึง (Personal data & access)
+      description: ฟีเจอร์นี้เก็บ แสดง หรือส่งออกข้อมูลส่วนบุคคลไหม ใครควรเห็นข้อมูลนี้บ้าง ถ้าไม่เกี่ยวให้เขียนว่า "ไม่เกี่ยวข้อง"
+  - type: textarea
+    id: references
+    attributes:
+      label: ดีไซน์และเอกสารอ้างอิง (Design & references)
+      description: ลิงก์ดีไซน์, requirement id, เอกสาร spec, ภาพตัวอย่าง
+  - type: textarea
+    id: uat
+    attributes:
+      label: แผนทดสอบและ UAT (Test & UAT scenario)
+      description: ผู้ใช้จะตรวจรับฟีเจอร์นี้อย่างไรในรอบ UAT
+  - type: checkboxes
+    id: definition_of_ready
+    attributes:
+      label: Definition of Ready
+      description: ติ๊กเมื่อพร้อม แล้วค่อยย้ายสถานะจาก Backlog ไป Ready
+      options:
+        - label: เกณฑ์การยอมรับชัดเจนและทดสอบได้
+        - label: ระบุผลกระทบต่อ API, ฐานข้อมูล และสิทธิ์แล้ว
+        - label: ดีไซน์หรือ spec พร้อมใช้
+        - label: ไม่มี dependency ที่ยังติดอยู่
+        - label: ประเมินขนาดงาน (Size) แล้ว

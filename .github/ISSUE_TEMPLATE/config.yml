@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: นโยบายความปลอดภัย (Security policy)
+    url: https://github.com/WE-Tech-Consulting/.github/blob/main/SECURITY.md
+    about: อ่านก่อนรายงานช่องโหว่ ห้ามใส่ secret, token, password หรือข้อมูลส่วนบุคคลจริงลงใน issue
